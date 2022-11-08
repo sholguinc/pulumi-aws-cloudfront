@@ -4,7 +4,8 @@ import * as synced_folder from "@pulumi/synced-folder";
 
 // Import the program's configuration settings.
 const config = new pulumi.Config();
-const path = config.get("path") || "../neutron_web/dist";
+const path = config.get("path") || "../dist";
+const projectName = config.get("projectName");
 const indexDocument = config.get("indexDocument") || "index.html";
 const errorDocument = config.get("errorDocument") || "error.html";
 
@@ -12,7 +13,7 @@ const errorDocument = config.get("errorDocument") || "error.html";
 const stack = pulumi.getStack()
 
 // Create an S3 bucket and configure it as a website.
-const bucket = new aws.s3.Bucket(`neutron-${stack}-bucket`, {
+const bucket = new aws.s3.Bucket(`${projectName}-${stack}`, {
     acl: "public-read",
     bucket: `neutron-${stack}-bucket`,
     website: {

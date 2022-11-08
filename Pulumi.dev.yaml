@@ -1,7 +1,8 @@
 config:
-  aws:profile: sergio-hc
+  aws:profile: pulumi
   aws:region: sa-east-1
-  neutron_iac:errorDocument: error.html
-  neutron_iac:indexDocument: index.html
-  neutron_iac:path: ../neutron_web/dist
+  s3-cloudfront-iac:projectName: test-neutron
+  s3-cloudfront-iac:errorDocument: error.html
+  s3-cloudfront-iac:indexDocument: index.html
+  s3-cloudfront-iac:path: ../dist
 
