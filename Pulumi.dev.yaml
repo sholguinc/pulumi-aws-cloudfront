@@ -1,0 +1,7 @@
+config:
+  aws:profile: sergio-hc
+  aws:region: sa-east-1
+  neutron_iac:errorDocument: error.html
+  neutron_iac:indexDocument: index.html
+  neutron_iac:path: ../neutron_web/dist
+
