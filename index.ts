@@ -15,7 +15,7 @@ const stack = pulumi.getStack()
 // Create an S3 bucket and configure it as a website.
 const bucket = new aws.s3.Bucket(`${projectName}-${stack}`, {
     acl: "public-read",
-    bucket: `neutron-${stack}-bucket`,
+    bucket: `${projectName}-${stack}`,
     website: {
         indexDocument: indexDocument,
         errorDocument: errorDocument,
