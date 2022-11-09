@@ -1,0 +1,12 @@
+# Pulumi.yaml
+name: projectName
+description: A TypeScript program to deploy a static website on AWS
+runtime: nodejs
+
+# Pulumi.{stack}.yaml
+config:
+  aws:region: awsRegion
+  test-neutron:projectName: projectName
+  test-neutron:errorDocument: error.html
+  test-neutron:indexDocument: index.html
+  test-neutron:path: distPath

@@ -3,6 +3,7 @@
 ## Initialize project
 
 - Configurate AWS credentials
-- Create a Stack and specificate AWS profile
-- Run 'pulumi up'
+- Define enviroment variables (parameters) like .env.example
+- Run 'pulumi.js' to create Pulumi.yaml and Pulumi.{stack}.yaml
+- Run 'pulumi up' to  update infrastructure
 - To see exports, run 'pulumi stack output'

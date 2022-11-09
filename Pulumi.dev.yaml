@@ -1,7 +1,0 @@
-config:
-  aws:region: sa-east-1
-  test-neutron:projectName: test-neutron
-  test-neutron:errorDocument: error.html
-  test-neutron:indexDocument: index.html
-  test-neutron:path: ../dist
-
