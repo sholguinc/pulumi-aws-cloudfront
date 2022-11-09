@@ -1,7 +1,8 @@
 const fs = require('fs');
 const YAML = require('js-yaml');
 
-const parameters = process.env.PARAMETERS
+const parametersString = process.env.PARAMETERS
+const parameters = JSON.parse(parametersString)
 
 // Pulumi.yaml
 const pulumi = {
