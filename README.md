@@ -4,6 +4,6 @@
 
 - Configurate AWS credentials
 - Define enviroment variables (parameters) like .env.example
-- Run 'pulumi.js' to create Pulumi.yaml and Pulumi.{stack}.yaml
+- Run 'initialize.js' to create Pulumi.yaml and Pulumi.{stack}.yaml
 - Run 'pulumi up' to  update infrastructure
 - To see exports, run 'pulumi stack output'
