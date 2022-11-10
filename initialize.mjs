@@ -1,6 +1,6 @@
 // Initializing Stacks
 const { exec } = require('node:child_process')
-import { stackNames } from "./pulumi";
+import { stackNames } from "./pulumi.mjs";
 
 const organization = process.env.ORGANIZATION;
 
@@ -11,7 +11,7 @@ stackNames.forEach(stack => {
         if (err) {
             console.log(stderr)
         } else {
-            console.log(`Successfully created ${stackToInit} stack`)
+            console.log(`Successfully created ${stackToInit} stack \n`)
         }
     })
 })
