@@ -1,9 +1,5 @@
 {
     "name": "test-aws",
-    "engines": {
-        "npm": ">=8.19.2",
-        "node": "19.0.0"
-    },
     "devDependencies": {
         "@types/node": "^14"
     },
