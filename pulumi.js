@@ -1,6 +1,5 @@
 const fs = require('fs');
 const YAML = require('js-yaml');
-const { exec } = require('node:child_process')
 
 const parametersString = process.env.PARAMETERS
 const parameters = JSON.parse(parametersString)
@@ -40,6 +39,9 @@ const stackFiles = {
     prod: "Pulumi.prod.yaml",
 }
 
+// Stack Names
+export const stackNames = Object.keys(stackFiles);
+
 // YAML files to create
 const yamlFiles = {
     "Pulumi.yaml": pulumi,
@@ -56,20 +58,5 @@ fileNames.forEach(fileName => {
     const yaml = YAML.dump(json);
     fs.writeFileSync(fileName, yaml, function (err) {
         if (err) throw err;
-    })
-})
-
-// Initializing Stacks
-const organization = parameters.pulumiOrganization;
-let stackNames = Object.keys(stackFiles);
-stackNames.forEach(stack => {
-    const stackToInit = organization ? `${organization}/${stack}` : stack;
-    const command =  `pulumi stack init ${stackToInit}`;
-    exec(command, (err, stdout, stderr) => {
-        if (err) {
-            console.log(stderr)
-        } else {
-            console.log(`Successfully created ${stackToInit} stack`)
-        }
     })
 })
