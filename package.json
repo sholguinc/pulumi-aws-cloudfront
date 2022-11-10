@@ -1,5 +1,5 @@
 {
-    "name": "test-aws",
+    "name": "pulumi-aws-cloudfront",
     "devDependencies": {
         "@types/node": "^14"
     },
