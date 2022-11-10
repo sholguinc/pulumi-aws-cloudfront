@@ -2,7 +2,7 @@ const fs = require('fs');
 const YAML = require('js-yaml');
 const { exec } = require('node:child_process')
 
-const parametersString = process.env.PARAMETERS
+const parametersString = process.env.PULUMI_PARAMETERS
 const parameters = JSON.parse(parametersString)
 
 // Pulumi.yaml
