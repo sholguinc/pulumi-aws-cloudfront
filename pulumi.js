@@ -39,9 +39,6 @@ const stackFiles = {
     prod: "Pulumi.prod.yaml",
 }
 
-// Stack Names
-export const stackNames = Object.keys(stackFiles);
-
 // YAML files to create
 const yamlFiles = {
     "Pulumi.yaml": pulumi,
