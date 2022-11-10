@@ -49,9 +49,6 @@ const yamlFiles = {
     [stackFiles.prod]: stack,
 }
 
-// Directory (Submodule Name)
-const submodulePath = "pulumi"
-
 // Creating files
 let fileNames = Object.keys(yamlFiles);
 fileNames.forEach(fileName => {
@@ -66,9 +63,13 @@ fileNames.forEach(fileName => {
 const organization = parameters.pulumiOrganization;
 let stackNames = Object.keys(stackFiles);
 stackNames.forEach(stack => {
-    const stackInit = organization ? `pulumi stack init ${organization}/` : `pulumi stack init `
-    const command =  stackInit + stack
-    exec(command, (err) => {
-        if (err) throw err;
+    const stackToInit = organization ? `${organization}/${stack}` : stack;
+    const command =  `pulumi stack init ${stackToInit}`;
+    exec(command, (err, stdout, stderr) => {
+        if (err) {
+            console.log(stderr)
+        } else {
+            console.log(`Successfully created ${stackToInit} stack`)
+        }
     })
 })
