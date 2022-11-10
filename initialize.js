@@ -2,7 +2,7 @@
 const { exec } = require('node:child_process')
 import { stackNames } from "./pulumi";
 
-const organization = process.env.PULUMI_ORGANIZATION;
+const organization = process.env.ORGANIZATION;
 
 stackNames.forEach(stack => {
     const stackToInit = organization ? `${organization}/${stack}` : stack;
