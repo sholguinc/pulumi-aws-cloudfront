@@ -1,5 +1,6 @@
 const fs = require('fs');
 const YAML = require('js-yaml');
+const { exec } = require('node:child_process')
 
 const parametersString = process.env.PARAMETERS
 const parameters = JSON.parse(parametersString)
@@ -31,13 +32,21 @@ const stack = {
     }
 }
 
+// Stacks
+const stackFiles = {
+    dev: "Pulumi.dev.yaml",
+    test: "Pulumi.test.yaml",
+    staging: "Pulumi.staging.yaml",
+    prod: "Pulumi.prod.yaml",
+}
+
 // YAML files to create
 const yamlFiles = {
     "Pulumi.yaml": pulumi,
-    "Pulumi.dev.yaml": stack,
-    "Pulumi.test.yaml": stack,
-    "Pulumi.staging.yaml" : stack,
-    "Pulumi.prod.yaml": stack,
+    [stackFiles.dev]: stack,
+    [stackFiles.test]: stack,
+    [stackFiles.staging] : stack,
+    [stackFiles.prod]: stack,
 }
 
 // Directory (Submodule Name)
@@ -49,6 +58,17 @@ fileNames.forEach(fileName => {
     const json = yamlFiles[fileName];
     const yaml = YAML.dump(json);
     fs.writeFileSync(fileName, yaml, function (err) {
+        if (err) throw err;
+    })
+})
+
+// Initializing Stacks
+const organization = parameters.pulumiOrganization;
+let stackNames = Object.keys(stackFiles);
+stackNames.forEach(stack => {
+    const stackInit = organization ? `pulumi stack init ${organization}/` : `pulumi stack init `
+    const command =  stackInit + stack
+    exec(command, (err) => {
         if (err) throw err;
     })
 })
